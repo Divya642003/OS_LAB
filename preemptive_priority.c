@@ -1,3 +1,5 @@
+ 
+
  #include<stdio.h>
  #include<limits.h>
 
@@ -9,6 +11,7 @@
    int comp_time;
    int waiting_time;
    int turn_around_time;
+   int priority;
 
    int res_time;
    int rem_time;
@@ -21,10 +24,10 @@ int main()
     scanf("%d",&n);
     process a[n];
     printf(" enter the data of %d processes \n",n);
-    printf(" process id     arrival time    burst time ");
+    printf(" process id     arrival time    burst time    priority");
     for(i=0;i<n;i++)
     {
-      scanf("%d %d %d",&a[i].pid,&a[i].arrival_time,&a[i].burst_time);
+      scanf("%d %d %d %d",&a[i].pid,&a[i].arrival_time,&a[i].burst_time,&a[i].priority);
 
        a[i].res_time=-1;
        a[i].rem_time=a[i].burst_time;
@@ -48,16 +51,16 @@ int main()
     while(process_completed<n)
     {
         int min_index=-1;
-        int min_rem_time=INT_MAX;
+        int min_priority=INT_MAX;
 
         for(i=0;i<n;i++)
         {
             if(a[i].arrival_time<=time&&a[i].rem_time!=0)
             {
-                if(a[i].rem_time<min_rem_time)
+                if(a[i].priority<min_priority)
                 {
                     min_index=i;
-                    min_rem_time=a[i].rem_time;
+                    min_priority=a[i].priority;
                 }
             }
         }
