@@ -30,7 +30,7 @@ int main()
         head=arr[i];
 
         count+=temp;
-        totalSeekTime=temp*seektime;
+        totalSeekTime+=temp*seektime;
         seekTime[i]=totalSeekTime;
     }
 
