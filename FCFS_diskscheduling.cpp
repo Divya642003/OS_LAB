@@ -1,32 +1,47 @@
-#include<iostream>
-using namespace std;
-
+#include<stdio.h>
 int main()
 {
-    int n,i,j;
-    cout<<"enter the number of elements in request array :";
-    cin>>n;
-    int rq[n];
-    int head;
-    cout<<"enter the value of initial head position :";
-    cin>>head;
-    cout<<"enter the values in request array :";
-    for(auto &x:rq)
-    cin>>x;
-    int result=0;
-    int seektime ;
-    cout<<"enter the seek time for each track :";
-    cin>>seektime;
-    int seektime_array[n];
-    int total_seek_time=0;
+    int n , i ;
+    printf("Enter number of requests:");
+    scanf("%d",&n);
+
+    int arr[n];
+
+    printf("Enter requests:");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",arr+i);
+    }
+
+     int head;
+    printf("Enter initial position of head:");
+    scanf("%d",&head);
+
+    int seektime;
+    printf("Enter seek time:");
+    scanf("%d",&seektime);
+
+     int seekTime[n];
+    int count=0;
+    int totalSeekTime=0;
     for(i=0;i<n;i++)
     {
-        int temp= rq[i]>head?rq[i]-head:head-rq[i];
-        seektime_array[i]=seektime*temp;
-        result = result +temp;
-        head = rq[i];
-        total_seek_time+=seektime_array[i];
+        int temp=arr[i]>head?arr[i]-head:head-arr[i];
+        head=arr[i];
+
+        count+=temp;
+        totalSeekTime=temp*seektime;
+        seekTime[i]=totalSeekTime;
     }
-    cout<<"total number of seek operations are : "<<result<<endl;
-    cout<<"total seek time for overall operations : "<<total_seek_time<<endl;
+
+    printf("\nRequest\tSeek_Time");
+    for(i=0;i<n;i++)
+    {
+        printf("\n%7d\t%9d",arr[i],seekTime[i]);
+    }
+    
+    printf("\n\nTotal seek operations: %d",count);
+    printf("\nTotal seek time: %d",totalSeekTime);
+
+
 }
