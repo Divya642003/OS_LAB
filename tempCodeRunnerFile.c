@@ -10,7 +10,6 @@
    int comp_time;
    int waiting_time;
    int turn_around_time;
-   int priority;
 
    int res_time;
    int rem_time;
@@ -23,12 +22,12 @@ int main()
     scanf("%d",&n);
     process a[n];
     
-    printf("\nENTER                            P_ID    ARRIVAL_TIME    BURST_TIME  PRIORITY");
+    printf("\nENTER                            P_ID    ARRIVAL_TIME    BURST_TIME  ");
 
     for(i=0;i<n;i++)
     {
         printf("\nENTER RECORD FOR PROCESS %d ",i+1);
-      scanf("%d %d %d %d",&a[i].pid,&a[i].arrival_time,&a[i].burst_time,&a[i].priority);
+      scanf("%d %d %d",&a[i].pid,&a[i].arrival_time,&a[i].burst_time);
 
        a[i].res_time=-1;
        a[i].rem_time=a[i].burst_time;
@@ -53,16 +52,16 @@ int main()
     while(process_completed<n)
     {
         int min_index=-1;
-        int min_priority=INT_MAX;
+        int min_rem_time=INT_MAX;
 
         for(i=0;i<n;i++)
         {
             if(a[i].arrival_time<=time&&a[i].rem_time!=0)
             {
-                if(a[i].rem_time<min_priority)
+                if(a[i].rem_time<min_rem_time)
                 {
                     min_index=i;
-                    min_priority=a[i].rem_time;
+                    min_rem_time=a[i].rem_time;
                 }
             }
         }

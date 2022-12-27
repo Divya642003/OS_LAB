@@ -98,7 +98,7 @@ int main()
     float averg_wait_time=0,averg_turn_time=0;
     for(i=0;i<n;i++)
     {
-        printf("\nPid   arrival_time    brust_time    waiting_time     completion_time    turnaround_time    response_time\n");
+        printf("\nPid   arrival_time    brust_time    waiting_time  completion_time  turnaround_time    response_time\n");
         printf("%3d %12d %10d %12d %15d %15d %13d\n",a[i].pid,a[i].arrival_time,a[i].burst_time,a[i].waiting_time,a[i].comp_time,a[i].turn_around_time,a[i].res_time);
         averg_wait_time+=a[i].waiting_time;
         averg_turn_time+=a[i].turn_around_time;
