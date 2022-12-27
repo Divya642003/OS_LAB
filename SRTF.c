@@ -45,6 +45,7 @@ int main()
 
     int time=0;
     int process_completed=0;
+    int idle_time=0;
 
     while(process_completed<n)
     {
@@ -62,10 +63,17 @@ int main()
                 }
             }
         }
+         if(min_index==-1)
+        {
+            idle_time++;
+            time++;
+           
+            continue;
+        }
 
         if(a[min_index].res_time==-1)
         {
-            a[min_index].res_time=time;
+            a[min_index].res_time=time-a[min_index].arrival_time;
         }
 
         time++;
